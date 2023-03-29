@@ -29,7 +29,7 @@ class AsyncForm {
   registerEvents() {
     this.submit();
     return false
-  }
+  };
 
   /**
    * Преобразует данные формы в объект вида
@@ -40,8 +40,18 @@ class AsyncForm {
    * */
   getData() {
     const formData = new FormData(this.element);
-    return formData;
-  }
+    const entries = formData.entries();
+
+    const arrForm =[];
+
+    for(let paar of entries){
+      arrForm.push(paar);
+    };
+
+    const objForm = Object.fromEntries(arrForm)
+
+    return JSON.stringify(objForm)
+  };
 
   onSubmit(options){
 
@@ -54,5 +64,6 @@ class AsyncForm {
   submit() {
     let getData = this.getData();
     this.onSubmit(getData);
+
   }
 }

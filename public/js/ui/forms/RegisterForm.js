@@ -13,9 +13,9 @@ class RegisterForm extends AsyncForm {
    * */
   onSubmit(data) {
     const modalRegister = document.getElementById('modal-register');
-    const btnRagister = modalRegister.querySelector('.btn-primary');
+    const btnRegister = modalRegister.querySelector('.btn-primary');
 
-    btnRagister.addEventListener('click', (e)=>{
+    btnRegister.addEventListener('click', (e)=>{
       e.preventDefault();
       User.register(data)
 

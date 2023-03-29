@@ -37,15 +37,7 @@ class User {
     createRequest({
       url: this.URL + '/current',
       method: 'GET',
-      callback: (err, response) => {
-        if(response.success === true){
-          this.setCurrent(response.user);
-        } else {
-          this.unsetCurrent();
-        };
-
-        callback(err, response);
-      }
+      callback
     });
   }
 
@@ -78,15 +70,18 @@ class User {
    * */
   static register(data, callback) {
     createRequest({
+      url: this.URL + '/register',
       method: 'POST',
       data,
-      callback: (err, response) =>{
-        if(response.success === true){
+      callback: (err, response) => {
+        if (response && response.user) {
           this.setCurrent(response.user);
-        };
-          callback(err, response);
-      }  
+        }
+        callback(err, response);
+      }
     });
+
+
   };
 
   /**
